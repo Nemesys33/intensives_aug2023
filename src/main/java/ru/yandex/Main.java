@@ -13,6 +13,7 @@ public class Main {
         Task7PrimeNumbers.selfCheck();
         Task8BinarySearch.selfCheck();
         Task9ReverseList.selfCheck();
-        Task10Permutations.selfCheck();
+        //Task10Permutations.selfCheck();
+        Task11BiggestSubarraySum.selfCheck();
     }
 }

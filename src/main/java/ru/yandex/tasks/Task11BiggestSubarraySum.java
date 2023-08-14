@@ -9,7 +9,23 @@ public class Task11BiggestSubarraySum {
          * Выход: Subarray
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        Subarray subarray = new Subarray();
+        int left = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+            if(sum > max){
+                max = sum;
+                subarray.left = left;
+                subarray.right = i + 1;
+            }
+            if(sum < 0){
+                sum = 0;
+                left = i + 1;
+            }
+        }
+        return subarray;
     }
 
     public static void selfCheck() {
