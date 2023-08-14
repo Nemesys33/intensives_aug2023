@@ -16,5 +16,6 @@ public class Main {
         //Task10Permutations.selfCheck();
         Task11BiggestSubarraySum.selfCheck();
         Task12Spiral.selfCheck();
+        Task13MergeSort.selfCheck();
     }
 }
