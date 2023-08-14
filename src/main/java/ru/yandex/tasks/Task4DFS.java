@@ -1,13 +1,17 @@
 package ru.yandex.tasks;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Task4DFS {
-    public void runSearch() {
-        /*
-         * Реализация dfs
-         */
-        // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+
+    static List<Integer> list = new ArrayList<>();
+    public static void runSearch(int[][] tree, int root) {
+        if(root == -1) return;
+        runSearch(tree, tree[root][0]);
+        runSearch(tree, tree[root][1]);
+        list.add(root);
     }
 
     public static int[] getDFSOrder(int[][] tree, int root) {
@@ -19,7 +23,13 @@ public class Task4DFS {
          * root - корень, откуда нужно начинать обход
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        list.clear();
+        runSearch(tree, root);
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+        return answer;
     }
 
     public static void selfCheck() {
