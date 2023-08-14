@@ -10,7 +10,47 @@ public class Task12Spiral {
          * Выход: массив со спиралью
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        int[][] ans = new int[N][N];
+        int[][] visited = new int[N][N];
+        int w = 0, h = 0;
+        while(w < N) {
+            ans[h][w] = w+1;
+            visited[h][w] = 1;
+            w++;
+        }
+        w--;
+        for (int i = N + 1; i <= N * N;) {
+            var up = (h > 0 && visited[h-1][w] == 0);
+            var down = (h < N - 1 && visited[h+1][w] == 0);
+            var left = (w > 0 && visited[h][w-1] == 0);
+
+            if(up){
+                while(h > 0 && visited[h-1][w] == 0){
+                    h--;
+                    ans[h][w] = i++;
+                    visited[h][w] = 1;
+                }
+            } else if(down){
+                while(h < N- 1 && visited[h + 1][w] == 0){
+                    h++;
+                    ans[h][w] = i++;
+                    visited[h][w] = 1;
+                }
+            }else if(left){
+                while(w > 0 && visited[h][w - 1] == 0){
+                    w--;
+                    ans[h][w] = i++;
+                    visited[h][w] = 1;
+                }
+            } else{ // right
+                while(w < N - 1 && visited[h][w + 1] == 0){
+                    w++;
+                    ans[h][w] = i++;
+                    visited[h][w] = 1;
+                }
+            }
+        }
+        return ans;
     }
 
     public static void selfCheck() {
