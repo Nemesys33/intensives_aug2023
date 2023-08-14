@@ -1,6 +1,6 @@
 package ru.yandex.tasks;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Task5BFS {
     public void runSearch() {
@@ -18,7 +18,23 @@ public class Task5BFS {
          * root - корень, откуда нужно начинать обход
          */
         // (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ WRITE CODE HERE (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-        return null;
+        List<Integer> list = new ArrayList<>();
+        Deque<Integer> queue = new ArrayDeque<>();
+        queue.addFirst(root);
+        while(!queue.isEmpty()){
+            var num = queue.pollLast();
+            list.add(num);
+            if(tree[num][0] != -1)
+                queue.addFirst(tree[num][0]);
+            if(tree[num][1] != -1)
+                queue.addFirst(tree[num][1]);
+        }
+
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+        return answer;
     }
 
     public static void selfCheck() {
@@ -39,6 +55,7 @@ public class Task5BFS {
         int[] ans2 = {3, 4};
         int[] ans3 = {2};
         int[] ans4 = {6, 8};
+
 
         assert (Arrays.equals(getBFSOrder(tree, 0), ans1));
         assert (Arrays.equals(getBFSOrder(tree, 3), ans2));
